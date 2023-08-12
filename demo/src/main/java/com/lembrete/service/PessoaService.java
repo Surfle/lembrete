@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import com.lembrete.entity.Pessoa;
+import com.lembrete.entity.Lembrete;
+
+import com.lembrete.repository.LembreteRepository;
 import com.lembrete.repository.PessoaRepository;
 
 @Service
@@ -15,9 +18,15 @@ public class PessoaService {
 	
 	@Autowired
 	private PessoaRepository repository;
+	@Autowired
+	private LembreteRepository lRepository;
 	
 	public List<Pessoa> findAll(){
 		return repository.findAll();
+	}
+	
+	public List<Lembrete> findPessoa(String nome){
+		return lRepository.findAllLembretesByNomePessoa(nome);
 	}
 	
 	public ResponseEntity<Pessoa> include(Pessoa pessoa) {
@@ -47,6 +56,8 @@ public class PessoaService {
         this.repository.deleteById(id);
 		
 	}
+	
+	
 
 
 }
