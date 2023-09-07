@@ -12,9 +12,19 @@ import lombok.Data;
 @Table(name = "pessoa")
 public class Pessoa {
 
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	private String nome;
+	
+	public Pessoa(long id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+	public Pessoa() {
+
+    }
 }

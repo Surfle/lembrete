@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.lembrete.entity.Lembrete;
 import com.lembrete.entity.Pessoa;
 import com.lembrete.service.PessoaService;
 
@@ -26,7 +27,7 @@ public class PessoaController {
 	private PessoaService service;
 
 	@GetMapping()
-	public ResponseEntity<Pessoa> findPessoa(@RequestParam("nome") String nome) {
+	public ResponseEntity<List<Lembrete>> findPessoa(@RequestParam("nome") String nome) {
 		try {
 			return ResponseEntity.ok(service.findPessoa(nome));
 		} catch (Exception e) {
